@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flower shop</title>
+</head>
+<body>
+<div th:replace="fragments/cart-header.html
+      :: cart(count=${cart.count()}, price=${cart.price()})">
+</div>
+<h1>Mood builder</h1>
+
+<div>
+    <form action="#" th:action="@{/flowers}"
+          th:object="${moodDefinition}" method="post">
+
+        <div class="form-group">
+            <select th:field="*{ageGroup}">
+                <option th:value="'ADULT'">Adult</option>
+                <option th:value="'KID'">Kid</option>
+                <option th:value="'SENIOR'">Senior</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <select th:field="*{colorPalette}">
+                <option th:value="'LIGHT'">Light</option>
+                <option th:value="'DARK'">Dark</option>
+                <option th:value="'DEEP'">Deep</option>
+                <option th:value="'COLORFUL'">Colorful</option>
+                <option th:value="'PASTEL'">Pastel</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <select th:field="*{style}">
+                <option th:value="'COSY'">Cosy</option>
+                <option th:value="'MINIMALIST'">Minimalist</option>
+                <option th:value="'ROMANTIC'">Romantic</option>
+                <option th:value="'CLASSIC'">Classic</option>
+                <option th:value="'CONTEMPORARY'">Contemporary</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <select th:field="*{occasion}">
+                <option th:value="'WEDDING'">Wedding</option>
+                <option th:value="'FUNERAL'">Funeral</option>
+                <option th:value="'BIRTHDAY'">Birthday</option>
+                <option th:value="'CELEBRATION'">Celebration</option>
+            </select>
+        </div>
+        <div>
+            <input type="submit" value="Search"/>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
+

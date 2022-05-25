@@ -1,0 +1,8 @@
+<div th:fragment="cart (count, price)" xmlns:th="http://www.w3.org/1999/html">
+    <h3>Cart:</h3>
+    <span>Price:</span>
+    <th:span th:text="${price}">Price</th:span>
+    <br/>
+    <span>Flower count:</span>
+    <th:span th:text="${count}">Count</th:span>
+</div>
