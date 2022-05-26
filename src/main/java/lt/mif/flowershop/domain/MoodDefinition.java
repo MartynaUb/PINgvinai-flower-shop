@@ -1,4 +1,4 @@
-package lt.mif.flowershop.entity;
+package lt.mif.flowershop.domain;
 
 public class MoodDefinition {
 
@@ -58,5 +58,14 @@ public class MoodDefinition {
         ADULT, KID, SENIOR
     }
 
+    @Override
+    public String toString() {
+        return "MoodDefinition{" +
+                "occasion=" + occasion +
+                ", style=" + style +
+                ", ageGroup=" + ageGroup +
+                ", colorPalette=" + colorPalette +
+                '}';
+    }
 }
 
