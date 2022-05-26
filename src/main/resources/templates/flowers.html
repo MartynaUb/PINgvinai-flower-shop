@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flower shop</title>
+</head>
+<body>
+<div th:replace="fragments/cart-header.html
+      :: cart(count=${cart.count()}, price=${cart.price()})">
+</div>
+<h1>Flower shop</h1>
+<div>
+    <div th:if="${moodFlowers != null}">
+        <div>
+            <a th:href="@{'/mood-builder'}">
+                <button type="button">Search for different mood</button>
+            </a>
+        </div>
+
+        <div th:replace="fragments/flower-table.html
+      :: flowerTable(caption='Flowers for your mood', flowers=${moodFlowers})">
+        </div>
+        <a th:href="@{'/flowers/reset-mood'}">
+            <button type="button">All flowers</button>
+        </a>
+    </div>
+
+    <div th:if="${moodFlowers == null}">
+        <div>
+            <span>Use our amazing mood builder to find the flowers that suits your needs the most!</span>
+            <a th:href="@{'/mood-builder'}">
+                <button type="button">Use mood builder</button>
+            </a>
+        </div>
+
+        <div th:replace="fragments/flower-table.html
+      :: flowerTable(caption='Bouquets', flowers=${bouquets})">
+        </div>
+        <div th:replace="fragments/flower-table.html
+      :: flowerTable(caption='Flowers in the pot', flowers=${potFlowers})">
+        </div>
+        <div th:replace="fragments/flower-table.html
+      :: flowerTable(caption='Single Flowers', flowers=${singleFlowers})">
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

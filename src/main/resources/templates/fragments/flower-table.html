@@ -1,0 +1,33 @@
+<div th:fragment="flowerTable (caption, flowers)" xmlns:th="http://www.w3.org/1999/html">
+    <table>
+        <caption th:text="${caption}">Flowers</caption>
+        <thead>
+        <tr>
+            <th>Flower name</th>
+            <th>Price in euros</th>
+            <th>Colors</th>
+            <th>Number of flowers</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="flower : ${flowers}">
+            <td th:text="${{flower.name}}">Name</td>
+            <td th:text="${{flower.price}}">Price</td>
+            <td>
+                <table>
+                    <tbody>
+                    <tr th:each="color : ${flower.colors}">
+                        <td th:text="${color}">White</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td th:text="${{flower.flowerNumber}}">Number</td>
+            <td><a th:href="@{'/shopping-cart/add-product/{id}'(id=${flower.id})}">
+                <button type="button">Add to cart</button>
+            </a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
