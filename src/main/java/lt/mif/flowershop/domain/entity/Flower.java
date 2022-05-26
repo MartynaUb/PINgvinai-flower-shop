@@ -31,7 +31,7 @@ public class Flower extends Item {
         return new Flower(price, 999, "Gift Check", new byte[0], FlowerType.GIFT_CHECK, 0, Collections.emptyList(), Collections.emptySet());
     }
 
-    protected Flower() {
+    public Flower() {
 
     }
 

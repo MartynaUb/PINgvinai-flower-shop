@@ -17,6 +17,8 @@ public class Item {
     private String name;
     @Lob
     private byte[] image;
+    @Version
+    private int version;
 
     public Item() {
     }
@@ -57,7 +59,7 @@ public class Item {
     }
 
     public String getImageBase64() {
-        return "data:image/png;base64,"  + Base64.getEncoder().encodeToString(getImage());
+        return "data:image/png;base64," + Base64.getEncoder().encodeToString(getImage());
     }
 
     public void setImage(byte[] image) {
@@ -94,5 +96,13 @@ public class Item {
                 ", name='" + name + '\'' +
                 ", image=" + Arrays.toString(image) +
                 '}';
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 }
