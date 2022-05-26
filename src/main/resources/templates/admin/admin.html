@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop Admin Site</title>
+</head>
+<body>
+<a th:href="@{'/admin/create'}">
+    <button type="button">Add  new flower</button>
+</a>
+<table>
+    <thead>
+    <tr>
+        <th>Flower name</th>
+        <th>Price in euros</th>
+        <th>Colors</th>
+        <th>Number of flowers</th>
+        <th>Image</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="flower : ${flowers}">
+        <td th:text="${{flower.name}}">Name</td>
+        <td th:text="${{flower.price}}">Price</td>
+        <td>
+            <table>
+                <tbody>
+                <tr th:each="color : ${flower.colors}">
+                    <td th:text="${color}">White</td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+        <td th:text="${{flower.flowerNumber}}">Number</td>
+        <td><img width="200" height="200" th:src="${{flower.getImageBase64()}}"/></td>
+        <td><a th:href="@{'/admin/update/{id}'(id=${flower.id})}">
+            <button type="button">Update</button>
+        </a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
