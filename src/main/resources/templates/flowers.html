@@ -33,14 +33,17 @@
             </a>
         </div>
 
+        <h3>Bouquets</h3>
         <div th:replace="fragments/flower-table.html
-      :: flowerTable(caption='Bouquets', flowers=${bouquets})">
+      :: flowerTable(flowers=${bouquets})">
         </div>
+        <h3>Flowers in the pot</h3>
         <div th:replace="fragments/flower-table.html
-      :: flowerTable(caption='Flowers in the pot', flowers=${potFlowers})">
+      :: flowerTable(flowers=${potFlowers})">
         </div>
+        <h3>Single Flowers</h3>
         <div th:replace="fragments/flower-table.html
-      :: flowerTable(caption='Single Flowers', flowers=${singleFlowers})">
+      :: flowerTable(flowers=${singleFlowers})">
         </div>
     </div>
 </div>

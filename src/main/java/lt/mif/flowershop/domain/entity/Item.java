@@ -3,6 +3,7 @@ package lt.mif.flowershop.domain.entity;
 import javax.persistence.*;
 import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.Objects;
 
 @MappedSuperclass
@@ -53,6 +54,10 @@ public class Item {
 
     public byte[] getImage() {
         return image;
+    }
+
+    public String getImageBase64() {
+        return "data:image/png;base64,"  + Base64.getEncoder().encodeToString(getImage());
     }
 
     public void setImage(byte[] image) {
