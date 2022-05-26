@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="audit-file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/audit.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logs/archived/app.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <totalSizeCap>20GB</totalSizeCap>
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger{36}.%M - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+
+    <logger name="audit-logger" level="info">
+        <appender-ref ref="audit-file"/>
+    </logger>
+
+    <root level="info">
+        <appender-ref ref="stdout"/>
+    </root>
+
+</configuration>

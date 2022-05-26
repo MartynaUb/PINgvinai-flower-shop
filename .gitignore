@@ -36,5 +36,6 @@ build/
 
 mvnw
 mvnw.cmd
-HELP.md
 flower-shop.iml
+
+logs
