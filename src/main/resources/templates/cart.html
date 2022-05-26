@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+</head>
+<body>
+<h1>Cart</h1>
+
+<table>
+    <caption>Flowers</caption>
+    <thead>
+    <tr>
+        <th>Flower name</th>
+        <th>Price in euros</th>
+        <th>Quantity</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${cart}">
+        <td th:text="${{item.key.name}}"></td>
+        <td th:text="${{item.key.price}}"></td>
+        <td th:text="${{item.value}}"></td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{'/order'}">
+    <button type="button">Proceed with checkout</button>
+</a>
+<br>
+<a th:href="@{'/flowers'}">
+    <button type="button">Go back</button>
+</a>
+
+</body>
+</html>

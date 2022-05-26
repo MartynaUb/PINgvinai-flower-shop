@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Invoice</title>
+</head>
+<script th:inline="javascript">
+    function timedRefresh() {
+        if([[${processing}]]) {
+            setTimeout("location.reload();", 2000);
+        }
+    }
+</script>
+<body onload="timedRefresh();">
+<div th:if="${processing}">
+    <h1>Order invoice</h1>
+    Your order is being processed. It will be presented soon
+</div>
+<div th:if="${processed}">
+    <h1>Order invoice</h1>
+    <h3>Buyer  info:</h3>
+    <span>First name:</span><span th:text="${{invoice.orderInformation.firstName}}"></span>
+    <span>Last name:</span><span th:text="${{invoice.orderInformation.lastName}}"></span>
+    <br>
+    <span>Email:</span><span th:text="${{invoice.orderInformation.email}}"></span>
+    <span>PhoneNumber:</span><span th:text="${{invoice.orderInformation.phoneNumber}}"></span>
+    <br>
+    <span>Address:</span><span th:text="${{invoice.orderInformation.address}}"></span>
+    <br>
+    <h3>Order details:</h3>
+    <br>
+    <ul th:each="item : ${invoice.itemDefinitions}">
+        <li th:text="${item}">Item</li>
+    </ul>
+    <br>
+    <span>Expected date:</span><span th:text="${{invoice.expectedDate}}">Expected Date</span>
+    <br>
+    <span>Total price paid:</span><span th:text="${{invoice.totalPrice}}">Total Price</span>
+</div>
+</body>
+</html>
