@@ -1,4 +1,4 @@
-package lt.mif.flowershop.entity;
+package lt.mif.flowershop.domain.entity;
 
 import javax.persistence.*;
 import java.math.BigInteger;
@@ -78,5 +78,16 @@ public class Item {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", name='" + name + '\'' +
+                ", image=" + Arrays.toString(image) +
+                '}';
     }
 }

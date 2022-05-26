@@ -1,8 +1,8 @@
 package lt.mif.flowershop.service;
 
 import lt.mif.flowershop.dao.FlowerRepository;
-import lt.mif.flowershop.entity.Flower;
-import lt.mif.flowershop.entity.MoodDefinition;
+import lt.mif.flowershop.domain.entity.Flower;
+import lt.mif.flowershop.domain.MoodDefinition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +38,6 @@ public class FlowerService {
     }
 
     public Flower getFlower(long flowerId) {
-        return flowerRepository.getReferenceById(flowerId);
+        return flowerRepository.findById(flowerId).get();
     }
 }

@@ -1,6 +1,6 @@
 package lt.mif.flowershop.dao;
 
-import lt.mif.flowershop.entity.Flower;
+import lt.mif.flowershop.domain.entity.Flower;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

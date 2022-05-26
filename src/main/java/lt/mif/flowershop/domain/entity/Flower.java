@@ -1,10 +1,8 @@
-package lt.mif.flowershop.entity;
+package lt.mif.flowershop.domain.entity;
 
 import javax.persistence.*;
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -14,30 +12,30 @@ public class Flower extends Item {
     private int flowerNumber;
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> colors = new ArrayList<>();
-    @ElementCollection
-    private List<String> tags = new ArrayList<>();
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<String> tags = new HashSet<>();
 
-    public static Flower singleFlower(String name, String color, BigInteger price, int quantity, byte[] image, List<String> tags) {
+    public static Flower singleFlower(String name, String color, BigInteger price, int quantity, byte[] image, Set<String> tags) {
         return new Flower(price, quantity, name, image, FlowerType.SINGLE_FLOWER, 1, Collections.singletonList(color), tags);
     }
 
-    public static Flower bouquet(String name, List<String> colors, int flowerCount, BigInteger price, int quantity, byte[] image, List<String> tags) {
+    public static Flower bouquet(String name, List<String> colors, int flowerCount, BigInteger price, int quantity, byte[] image, Set<String> tags) {
         return new Flower(price, quantity, name, image, FlowerType.BOUQUET, flowerCount, colors, tags);
     }
 
-    public static Flower potFlower(String name, List<String> colors, int flowerCount, BigInteger price, int quantity, byte[] image, List<String> tags) {
+    public static Flower potFlower(String name, List<String> colors, int flowerCount, BigInteger price, int quantity, byte[] image, Set<String> tags) {
         return new Flower(price, quantity, name, image, FlowerType.FLOWER_IN_POT, flowerCount, colors, tags);
     }
 
     public static Flower giftCheck(BigInteger price) {
-        return new Flower(price, 999, "Gift Check", new byte[0], FlowerType.GIFT_CHECK, 0, Collections.emptyList(), Collections.emptyList());
+        return new Flower(price, 999, "Gift Check", new byte[0], FlowerType.GIFT_CHECK, 0, Collections.emptyList(), Collections.emptySet());
     }
 
     protected Flower() {
 
     }
 
-    public Flower(BigInteger price, int quantity, String name, byte[] image, FlowerType type, int flowerNumber, List<String> colors, List<String> tags) {
+    public Flower(BigInteger price, int quantity, String name, byte[] image, FlowerType type, int flowerNumber, List<String> colors, Set<String> tags) {
         super(price, quantity, name, image);
         this.type = type;
         this.flowerNumber = flowerNumber;
@@ -73,11 +71,21 @@ public class Flower extends Item {
         SINGLE_FLOWER, BOUQUET, FLOWER_IN_POT, GIFT_CHECK
     }
 
-    public List<String> getTags() {
+    public Set<String> getTags() {
         return tags;
     }
 
-    public void setTags(List<String> tags) {
+    public void setTags(Set<String> tags) {
         this.tags = tags;
+    }
+
+    @Override
+    public String toString() {
+        return "Flower{" +
+                "type=" + type +
+                ", flowerNumber=" + flowerNumber +
+                ", colors=" + colors +
+                ", tags=" + tags +
+                '}';
     }
 }

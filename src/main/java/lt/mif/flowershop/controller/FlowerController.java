@@ -1,7 +1,7 @@
 package lt.mif.flowershop.controller;
 
-import lt.mif.flowershop.entity.Flower;
-import lt.mif.flowershop.entity.MoodDefinition;
+import lt.mif.flowershop.domain.entity.Flower;
+import lt.mif.flowershop.domain.MoodDefinition;
 import lt.mif.flowershop.service.FlowerService;
 import lt.mif.flowershop.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;

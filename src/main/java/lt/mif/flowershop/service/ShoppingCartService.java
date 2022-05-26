@@ -1,6 +1,6 @@
 package lt.mif.flowershop.service;
 
-import lt.mif.flowershop.entity.Flower;
+import lt.mif.flowershop.domain.entity.Flower;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
@@ -36,5 +36,9 @@ public class ShoppingCartService {
         return cart.entrySet().stream()
                 .map(entry -> entry.getKey().getPrice().multiply(BigInteger.valueOf(entry.getValue())))
                 .reduce(BigInteger.ZERO, BigInteger::add);
+    }
+
+    public Map<Flower, Integer> getCart() {
+        return new HashMap<>(cart);
     }
 }
