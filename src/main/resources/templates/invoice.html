@@ -36,6 +36,10 @@
     <span>Expected date:</span><span th:text="${{invoice.expectedDate}}">Expected Date</span>
     <br>
     <span>Total price paid:</span><span th:text="${{invoice.totalPrice}}">Total Price</span>
+    <br>
+    <a th:href="@{'/flowers'}">
+        <button type="button">Back to main menu</button>
+    </a>
 </div>
 </body>
 </html>

@@ -56,9 +56,10 @@ public class OrderProcessingController {
     public OrderInvoice getInvoice() {
         if (isProcessed()) {
             try {
+                shoppingCartService.reset();
                 return invoice.get();
             } catch (InterruptedException | ExecutionException e) {
-                throw new RuntimeException("Failed to process checkout");
+                throw new RuntimeException("Failed to process checkout", e);
             }
         } else {
             return null;
