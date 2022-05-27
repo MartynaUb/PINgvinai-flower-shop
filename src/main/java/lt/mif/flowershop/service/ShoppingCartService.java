@@ -41,4 +41,8 @@ public class ShoppingCartService {
     public Map<Flower, Integer> getCart() {
         return new HashMap<>(cart);
     }
+
+    public void reset() {
+        cart.keySet().clear();
+    }
 }
