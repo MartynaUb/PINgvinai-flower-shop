@@ -1,0 +1,314 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+nav {
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,.25);
+    padding-bottom: 30px;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    background-color: #FFFFFF;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.bag-icon {
+    height: 68px;
+    width: 67px;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+}
+
+.bag-icon:hover {
+    height: 68px;
+    width: 67px;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    content:url("../icons/shopping-bag-orange.png");
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    position: relative;
+}
+
+.nav-logo {
+    display: flex;
+    height: 123px;
+    width: 600px;
+    align-self: center;
+    flex: 0;
+}
+
+.action-links {
+    display: flex;
+    justify-content: center;
+    font-family: 'FONTSPRING DEMO - Mixta Ess Didone', serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    font-size: 28px;
+    line-height: 33px;
+}
+
+a:hover {
+    color: rgb(250, 60, 4);
+}
+
+a + a {
+    margin-left: 5%;
+}
+
+.main-section {
+    display: flex;
+    justify-content: center;
+}
+
+.home-img {
+    width: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+@font-face {
+    font-family: 'FONTSPRING DEMO - Mixta Ess Sharp Bold';
+    src: url('../fonts/Fontspring-DEMO-mixtaesssharp-bold.otf') format('otf');
+}
+
+.home-text {
+    position: absolute;
+    z-index: 1;
+    width: 1056px;
+    height: 266px;
+    left: -11px;
+    top: 400px;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 120px;
+    line-height: 141px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-justify: distribute;
+    text-align: center;
+}
+
+.frame {
+    position: absolute;
+    z-index: 1;
+    top:975px;
+    max-width: 100%;
+    width: 100%;
+}
+
+.expl-btn {
+    position: absolute;
+    z-index: 1;
+    border-radius: 15px;
+    top: 850px;
+    background-color: transparent;
+    color: white;
+    width: 400px;
+    height: 88px;
+    border: 3px solid #FFFFFF;
+
+    font-family: 'FONTSPRING DEMO - Mixta Ess Sharp';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 56px;
+}
+
+.expl-btn:hover {
+    color: rgb(250, 60, 4);
+    border: 3px solid rgb(250, 60, 4)
+}
+
+.card {
+    height: 785px;
+    width: 471px;
+    margin-left: 230px;
+    margin-top: 100px;
+    border-radius: 0px;
+    background: #FFFFFF;
+}
+
+.flower-img {
+    height: 608px;
+    width: 471px;
+    border-radius: 15px;
+    object-fit: cover;
+    margin-top: 12.48%;
+}
+
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-left: 175px;
+    margin-top: 1100px;
+    padding: 16px;
+    color: black;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    height: 100px;
+}
+
+/* Position the "next button" to the right */
+.next {
+    margin-left: 710px;
+    border-radius: 3px 0 0 3px;
+}
+
+/* Caption text */
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+    display: inline-flex;
+    flex-direction: row;
+}
+
+/* Number text (1/3 etc) */
+.species {
+    position: absolute;
+    margin-top: -2%;
+    margin-left: 7%;
+
+    font-family: 'FONTSPRING DEMO - Mixta Ess Didone Black';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 56px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+    color: #FA3C04;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot-list {
+    margin-left: 57.5%;
+    margin-top: -22.5%;
+}
+
+
+.active, .dot:hover {
+    background-color: rgb(250, 60, 4);
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+.suggest-section{
+}
+
+.slideshow-container {
+    width: 750px;
+}
+
+.quantity {
+    height: 54px;
+    width: 239px;
+
+    font-family: 'FONTSPRING DEMO - Mixta Ess Didone';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 47px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #4F4C4C;
+}
+
+.price {
+    height: 64px;
+    width: 168px;
+
+    margin-left: 16%;
+
+    font-family: 'FONTSPRING DEMO - Mixta Ess Didone';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 47px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #4F4C4C;
+}
+
+.option-img {
+    position: absolute;
+    width: 620px;
+    height: 846px;
+    margin-left: 825px;
+    margin-top: -700px;
+}
+
+.line {
+    position: absolute;
+    width: 1273px;
+    height: 0px;
+    margin-top: 264px;
+    margin-left: 130px;
+}
+
+
+
+
