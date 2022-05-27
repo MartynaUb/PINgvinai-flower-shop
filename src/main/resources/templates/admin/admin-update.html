@@ -5,45 +5,69 @@
     <title>Update flower</title>
 </head>
 <body>
-<form action="#" th:action="@{/admin/update}"
-      th:object="${flower}" method="post">
 
-    <h1>Add new flower</h1>
+<div th:if="${failedUpdate}">
+    <span>Flower update failed because it was changed by another user. You can:</span>
+    <br>
+    <a th:href="@{'/admin/update/{id}'(id=${flower.id})}">
+        <button type="button">Refresh page with the new changes</button>
+    </a>
+    <br>
+    <form action="#" th:action="@{/admin/update}"
+          th:object="${flower}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" th:field="*{version}"/>
+        <input type="hidden" th:field="*{image}"/>
+        <input type="hidden" th:field="*{name}"/>
+        <input type="hidden" th:field="*{price}"/>
+        <input type="hidden" th:field="*{flowerNumber}"/>
+        <input type="hidden" th:field="*{colors}"/>
+        <input type="hidden" th:field="*{tags}"/>
+        <input type="hidden" th:field="*{type}"/>
+        <input type="submit" value="Override your changes anyway"/>
+    </form>
+</div>
+<div th:if="!${failedUpdate}">
+    <form action="#" th:action="@{/admin/update}"
+          th:object="${flower}" method="post">
 
-    <input type="hidden" th:field="*{id}"/>
-    <input type="hidden" th:field="*{version}"/>
-    <input type="hidden" th:field="*{image}"/>
+        <h1>Add new flower</h1>
 
-    <div class="form-group">
-        <p>Name: <input type="text" th:field="*{name}"/></p>
-    </div>
+        <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" th:field="*{version}"/>
+        <input type="hidden" th:field="*{image}"/>
 
-    <div class="form-group">
-        <p>Price: <input type="number" th:field="*{price}"/></p>
-    </div>
+        <div class="form-group">
+            <p>Name: <input type="text" th:field="*{name}"/></p>
+        </div>
 
-    <div class="form-group">
-        <p>Number of flowers: <input type="number" th:field="*{flowerNumber}"/></p>
-    </div>
+        <div class="form-group">
+            <p>Price: <input type="number" th:field="*{price}"/></p>
+        </div>
 
-    <div class="form-group">
-        <p>Color: <input type="text" th:field="*{colors}"/></p>
-    </div>
+        <div class="form-group">
+            <p>Number of flowers: <input type="number" th:field="*{flowerNumber}"/></p>
+        </div>
 
-    <div class="form-group">
-        <p>Tag: <input type="text" th:field="*{tags}"/></p>
-    </div>
+        <div class="form-group">
+            <p>Color: <input type="text" th:field="*{colors}"/></p>
+        </div>
 
-    <div class="form-group">
-        <select th:field="*{type}">
-            <option th:value="'SINGLE_FLOWER'">Single flower</option>
-            <option th:value="'BOUQUET'">Bouquet</option>
-            <option th:value="'FLOWER_IN_POT'">Flower in the pot</option>
-        </select>
-    </div>
-    <div>
-        <input type="submit" value="Submit"/>
-    </div>
-</form>
+        <div class="form-group">
+            <p>Tag: <input type="text" th:field="*{tags}"/></p>
+        </div>
+
+        <div class="form-group">
+            <select th:field="*{type}">
+                <option th:value="'SINGLE_FLOWER'">Single flower</option>
+                <option th:value="'BOUQUET'">Bouquet</option>
+                <option th:value="'FLOWER_IN_POT'">Flower in the pot</option>
+            </select>
+        </div>
+        <div>
+            <input type="submit" value="Submit"/>
+        </div>
+    </form>
+</div>
 </body>
 </html>

@@ -3,8 +3,12 @@ package lt.mif.flowershop.controller;
 import lt.mif.flowershop.domain.entity.Flower;
 import lt.mif.flowershop.service.FlowerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -39,6 +43,7 @@ public class AdminController {
     public ModelAndView updatePage(@PathVariable("id") long id) {
         ModelAndView mav = new ModelAndView("admin/admin-update");
         mav.addObject("flower", flowerService.getFlower(id));
+        mav.addObject("failedUpdate", false);
 
         return mav;
     }
@@ -55,8 +60,17 @@ public class AdminController {
     }
 
     @PostMapping("/update")
-    public String updateFlower(Flower flower) {
-        flowerService.updateFlower(flower);
-        return "redirect:/admin";
+    public ModelAndView updateFlower(Flower flower) {
+        try {
+            flowerService.updateFlower(flower);
+        } catch (ObjectOptimisticLockingFailureException e) {
+            ModelAndView mav = new ModelAndView("admin/admin-update");
+            var currentFlower = flowerService.getFlower(flower.getId());
+            flower.setVersion(currentFlower.getVersion());
+            mav.addObject("flower", flower);
+            mav.addObject("failedUpdate", true);
+            return mav;
+        }
+        return new ModelAndView("redirect:/admin");
     }
 }

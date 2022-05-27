@@ -72,10 +72,7 @@ public class DataPopulator implements CommandLineRunner {
                                 MoodDefinition.AgeGroup.ADULT.toString(),
                                 MoodDefinition.Occasion.BIRTHDAY.toString()
                         )
-                ),
-                Flower.giftCheck(BigInteger.TEN),
-                Flower.giftCheck(BigInteger.valueOf(100)),
-                Flower.giftCheck(BigInteger.valueOf(50))
+                )
         );
         repository.saveAll(flowers);
 
