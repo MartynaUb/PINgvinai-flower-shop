@@ -9,7 +9,7 @@
 <body>
 <section>
     <div class="main-section">
-        <nav th:replace="fragments/navigation-bar.html :: nav-container"></nav>
+        <nav th:replace="fragments/navigation-bar.html :: nav-container (count=${cart.count()}, price=${cart.price()})"></nav>
         <p class="home-text">Spring news 2022</p>
     <img class="home-img" th:src="@{/images/action-background.jpg}"/>
         <img class="frame" th:src="@{/images/frame.png}"/>
@@ -70,10 +70,8 @@
             <hr class="line">
         </div>
 </section>
-<section>
-    <div th:replace="fragments/cart-header.html
-      :: cart(count=${cart.count()}, price=${cart.price()})">
-    </div>
+<section style="padding-top: 200px">
+    <br>
     <h1>Flower shop</h1>
     <div>
         <div th:if="${moodFlowers != null}">
